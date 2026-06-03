@@ -1,3 +1,4 @@
+import AuthConfirm from './pages/AuthConfirm'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { ToastProvider } from './components/ui/Toast'
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/events/:id" element={<PublicLayout><EventDetail /></PublicLayout>} />
             <Route path="/login" element={<PublicLayout><Login /></PublicLayout>} />
             <Route path="/register" element={<PublicLayout><Register /></PublicLayout>} />
+            <Route path="/auth/confirm" element={<PublicLayout><AuthConfirm /></PublicLayout>} />
 
             <Route path="/request-event" element={<PublicLayout><ProtectedRoute><RequestEvent /></ProtectedRoute></PublicLayout>} />
             <Route path="/my-registrations" element={<PublicLayout><ProtectedRoute><MyRegistrations /></ProtectedRoute></PublicLayout>} />
