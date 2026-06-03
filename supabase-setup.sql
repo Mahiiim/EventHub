@@ -1,15 +1,3 @@
--- ============================================================
--- EventHub — Supabase Complete Setup + Fixes
--- ============================================================
--- INSTRUCTIONS:
--- 1. Open your Supabase project → SQL Editor
--- 2. Paste this ENTIRE script and click "Run"
--- 3. After running, update your user's role to admin (see bottom)
--- ============================================================
-
--- ============================================================
--- STEP 1: DROP OLD POLICIES (clean slate to avoid conflicts)
--- ============================================================
 DO $$ DECLARE r RECORD;
 BEGIN
   FOR r IN SELECT policyname, tablename FROM pg_policies WHERE schemaname = 'public'
@@ -22,9 +10,6 @@ END $$;
 DROP POLICY IF EXISTS "Anyone can view event images" ON storage.objects;
 DROP POLICY IF EXISTS "Authenticated users can upload images" ON storage.objects;
 
--- ============================================================
--- STEP 2: CREATE TABLES
--- ============================================================
 
 CREATE TABLE IF NOT EXISTS public.users (
   id         uuid REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
@@ -78,20 +63,17 @@ CREATE TABLE IF NOT EXISTS public.participants (
   UNIQUE(event_id, user_id)
 );
 
--- ============================================================
--- STEP 3: ENABLE ROW LEVEL SECURITY
--- ============================================================
+
 ALTER TABLE public.users         ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.event_requests ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.events        ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.participants  ENABLE ROW LEVEL SECURITY;
 
--- ============================================================
--- STEP 4: RLS POLICIES
--- ============================================================
 
--- ── USERS ──────────────────────────────────────────────────
--- Anyone (incl. anon) can read all user rows
+-- RLS POLICIES
+
+
+
 CREATE POLICY "users_select_all"
   ON public.users FOR SELECT
   USING (true);
@@ -109,7 +91,7 @@ CREATE POLICY "users_update"
     OR EXISTS (SELECT 1 FROM public.users WHERE id = auth.uid() AND role = 'admin')
   );
 
--- ── EVENTS ─────────────────────────────────────────────────
+-- EVENTS
 -- Public can read active events; admins can read all
 CREATE POLICY "events_select"
   ON public.events FOR SELECT
