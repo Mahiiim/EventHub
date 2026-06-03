@@ -1,8 +1,3 @@
--- ============================================================
--- EventHub — Migration: Add new columns
--- Run this in Supabase SQL Editor
--- ============================================================
-
 -- Add google_form_url and organizer info to events table
 ALTER TABLE public.events
   ADD COLUMN IF NOT EXISTS google_form_url    text,
