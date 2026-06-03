@@ -76,7 +76,7 @@ export default function Register() {
           <span>·</span>
           <Link to="/events" className="hover:text-brand-600 transition-colors">Browse Events</Link>
           <span>·</span>
-          <Link to="/login" className="hover:text-brand-600 transition-colors">Sign In</Link>
+          <Link to="/login" className="hover:text-brand-600 transition-colors">Log in</Link>
         </div>
       </div>
     </div>
