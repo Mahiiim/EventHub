@@ -41,7 +41,7 @@ export default function Login() {
             <Calendar size={24} className="text-white" />
           </div>
           <h1 className="font-display text-3xl font-bold text-gray-900 dark:text-white">Welcome back</h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-2">Sign in to your EventHub account</p>
+          <p className="text-gray-500 dark:text-gray-400 mt-2">Log in to your EventHub account</p>
         </div>
 
         <div className="card p-8 shadow-xl">
@@ -59,7 +59,7 @@ export default function Login() {
                 placeholder="••••••••" className="input-field" />
             </div>
             <button type="submit" disabled={loading} className="btn-primary w-full py-3 flex items-center justify-center gap-2">
-              {loading ? <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />Signing in...</> : 'Sign in'}
+              {loading ? <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />Logging in...</> : 'Log in'}
             </button>
           </form>
           <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">

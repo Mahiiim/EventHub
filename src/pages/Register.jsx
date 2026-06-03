@@ -17,7 +17,7 @@ export default function Register() {
     setLoading(true)
     try {
       await authService.signUp(form.email, form.password, form.name)
-      toast('Account created! Check your email to verify.', 'success')
+      toast('Account created successfully! Please log in to get started.', 'success')
       navigate('/login')
     } catch (err) {
       toast(err.message || 'Registration failed', 'error')
@@ -67,7 +67,7 @@ export default function Register() {
           </form>
           <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
             Already have an account?{' '}
-            <Link to="/login" className="text-brand-600 hover:text-brand-700 font-medium">Sign in</Link>
+            <Link to="/login" className="text-brand-600 hover:text-brand-700 font-medium">Log in</Link>
           </p>
         </div>
 
