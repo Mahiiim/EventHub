@@ -18,38 +18,12 @@ A full-stack event registration platform built with React + Supabase.
 - 📱 Mobile-responsive layout
 - 📤 CSV export for participants
 
-## Quick Start
 
-### 1. Set up Supabase
-
-1. Create a project at [supabase.com](https://supabase.com)
-2. Go to **SQL Editor** and run the full contents of `supabase-setup.sql`
-3. Copy your project URL and anon key from **Settings → API**
-
-### 2. Configure Environment
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env`:
-```
-VITE_SUPABASE_URL=https://your-project-id.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key-here
-```
-
-### 3. Install & Run
+### Install & Run
 
 ```bash
 npm install
 npm run dev
-```
-
-### 4. Create an Admin
-
-After signing up, run in Supabase SQL Editor:
-```sql
-UPDATE public.users SET role = 'admin' WHERE email = 'your@email.com';
 ```
 
 ## Project Structure
@@ -79,6 +53,7 @@ src/
 │   ├── Register.jsx
 │   ├── RequestEvent.jsx
 │   ├── MyRegistrations.jsx
+│   ├── Profile.jsx
 │   └── admin/
 │       ├── Dashboard.jsx
 │       ├── AdminEvents.jsx
