@@ -63,7 +63,12 @@ export default function AdminEvents() {
       let image_url = form.image_url || null
       if (imageFile) image_url = await storageService.uploadEventImage(imageFile)
       const payload = {
-        ...form,
+        title: form.title,
+        description: form.description,
+        category: form.category,
+        location: form.location,
+        event_date: form.event_date,
+        status: form.status,
         image_url,
         created_by: editing ? (form.created_by || profile?.id) : profile?.id,
         capacity: parseInt(form.capacity) || 100,

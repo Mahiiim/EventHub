@@ -102,8 +102,9 @@ export const eventService = {
   },
 
   async update(id, updates) {
+    const { id: _id, created_at, participants, event_interests, going_count, interested_count, ...cleanUpdates } = updates;
     const payload = Object.fromEntries(
-      Object.entries(updates).filter(([, v]) => v !== undefined)
+      Object.entries(cleanUpdates).filter(([, v]) => v !== undefined)
     )
     const { data, error } = await supabase
       .from('events').update(payload).eq('id', id).select().single()
